@@ -1,4 +1,4 @@
-package com.example.carapp.data.remote
+package com.example.carapp.data
 
 data class CarDataModel(
     val name: String,
