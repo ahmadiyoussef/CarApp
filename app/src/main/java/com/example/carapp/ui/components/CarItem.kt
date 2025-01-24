@@ -1,47 +1,48 @@
 package com.example.carapp.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-
-
 import androidx.compose.foundation.layout.*
-
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.GlideImage
 
-
-
 @Composable
 fun CarItem(
-    carName: String,
-    carImageUrl: String
+    name: String,
+    description: String,
+    imageUrl: String,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(8.dp)
             .fillMaxWidth()
     ) {
-        Column(
-            Modifier
-                .padding(16.dp)
+        Row(
+            modifier = Modifier
+                .padding(8.dp)
                 .fillMaxWidth()
         ) {
             GlideImage(
-                model = carImageUrl,
+                model = imageUrl,
                 contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
+                modifier = Modifier.size(80.dp)
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = carName,
-                style = MaterialTheme.typography.bodyLarge
-            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(
+                    text = name,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = description,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }
