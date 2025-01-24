@@ -78,8 +78,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.glide.compose)
 
-    // Dagger Hilt
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
-    kapt(libs.hilt.compiler)
+    // Dagger
+    implementation("com.google.dagger:dagger:2.48.1")
+    kapt("com.google.dagger:dagger-compiler:2.48.1")
 }
