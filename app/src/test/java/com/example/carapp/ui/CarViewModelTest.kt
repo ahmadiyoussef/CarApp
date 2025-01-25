@@ -45,14 +45,31 @@ class CarViewModelTest{
             CarDomainModel("1", "Ford Mustang", "url1"),
             CarDomainModel("2", "Tesla Model S", "url2")
         )
+        // Given
         coEvery { carUseCase("ford") } returns mockCars
 
         // Act
         viewModel.getCars("ford")
 
 
-        // Assert
+        // Then: cars loaded and first
         val result = viewModel.carList.first()
         assertEquals(Resource.Success(mockCars), result)
+    }
+
+
+    @Test
+    fun `load cars with error`() = runTest {
+        // Arrange
+        val errorMessage = "Failed to load cars"
+        coEvery { carUseCase("ford") } throws Exception(errorMessage)
+
+        // When: default init of viewModel
+        viewModel.getCars("ford")
+
+
+        // Assert
+        val result = viewModel.carList.first()
+        assertEquals(Resource.Error(errorMessage), result)
     }
 }
