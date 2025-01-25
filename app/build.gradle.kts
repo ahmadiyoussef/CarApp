@@ -85,5 +85,7 @@ dependencies {
 
     implementation (libs.accompanist.swiperefresh)
 
+    testImplementation (libs.mockk)
+
 
 }
