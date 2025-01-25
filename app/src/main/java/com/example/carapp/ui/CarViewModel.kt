@@ -26,7 +26,7 @@ class CarViewModel @Inject constructor(
         getCars(make = "ford")
     }
 
-    private fun getCars(make: String) {
+     fun getCars(make: String) {
         viewModelScope.launch {
             _carList.value = Resource.Loading
             try {
