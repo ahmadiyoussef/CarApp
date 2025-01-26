@@ -16,8 +16,8 @@ class CarViewModel @Inject constructor(
     private val getCarsUseCase: GetCarsUseCase
 ) : ViewModel() {
 
-    private val _carList = MutableStateFlow<Resource<List<CarDomainModel>>>(Resource.Loading)
-    val carList: StateFlow<Resource<List<CarDomainModel>>> = _carList
+    private val _carList = MutableStateFlow<Resource<List<CarUiModel>>>(Resource.Loading)
+    val carList: StateFlow<Resource<List<CarUiModel>>> = _carList
 
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean> = _isRefreshing
@@ -31,7 +31,8 @@ class CarViewModel @Inject constructor(
             _carList.value = Resource.Loading
             try {
                 val cars = getCarsUseCase(make)
-                _carList.value = Resource.Success(cars)
+                val uiModels = cars.map { it.toUiModel() }
+                _carList.value = Resource.Success(uiModels)
             } catch (e: Exception) {
                 _carList.value = Resource.Error("Failed to load cars")
             }
@@ -43,7 +44,8 @@ class CarViewModel @Inject constructor(
             _isRefreshing.value = true
             try {
                 val cars = getCarsUseCase(make)
-                _carList.value = Resource.Success(cars)
+                val uiModels = cars.map { it.toUiModel() }
+                _carList.value = Resource.Success(uiModels)
             } catch (e: Exception) {
                 _carList.value = Resource.Error("Failed to refresh cars")
             } finally {

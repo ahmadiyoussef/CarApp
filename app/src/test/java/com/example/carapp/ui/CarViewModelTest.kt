@@ -45,6 +45,7 @@ class CarViewModelTest{
             CarDomainModel("1", "Ford Mustang", "url1"),
             CarDomainModel("2", "Tesla Model S", "url2")
         )
+        val mockUiCars = mockCars.map { it.toUiModel() }
         // Given
         coEvery { carUseCase("ford") } returns mockCars
 
@@ -54,7 +55,7 @@ class CarViewModelTest{
 
         // Then: cars loaded and first
         val result = viewModel.carList.first()
-        assertEquals(Resource.Success(mockCars), result)
+        assertEquals(Resource.Success(mockUiCars), result)
     }
 
 
