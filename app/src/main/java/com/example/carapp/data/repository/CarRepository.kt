@@ -22,7 +22,7 @@ class CarRepository @Inject constructor(private val apiService: CarApiService) {
 }
 
 val images = listOf(
-    "https://hips.hearstapps.com/hmg-prod/images/2017-ford-focus-1557785498.jpg",
+    "c",
     "https://upload.wikimedia.org/wikipedia/commons/c/ca/VW_Golf_V_front_20081127.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/7/75/2018_Ford_Focus_ST-Line_X_1.0.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/c/ca/VW_Golf_V_front_20081127.jpg",

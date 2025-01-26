@@ -48,7 +48,7 @@ class CarViewModelTest{
         // Given
         coEvery { carUseCase("ford") } returns mockCars
 
-        // Act
+        // When
         viewModel.getCars("ford")
 
 
