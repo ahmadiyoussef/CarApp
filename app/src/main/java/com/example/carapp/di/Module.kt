@@ -1,6 +1,7 @@
 package com.example.carapp.di
 
 
+import com.example.carapp.common.Constants.BASE_URL
 import com.example.carapp.data.remote.api.CarApiService
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ class AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://www.carqueryapi.com/api/0.3/").build()
+            .baseUrl(BASE_URL).build()
     }
 
     @Provides
